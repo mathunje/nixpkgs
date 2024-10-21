@@ -11,7 +11,7 @@ assert blas.isILP64 == lapack.isILP64;
 
 stdenv.mkDerivation rec {
   pname = "wannier90";
-  version = "3.1.0";
+  version = "develop_24_10_21";
 
   nativeBuildInputs = [ gfortran ];
   buildInputs = [
@@ -22,8 +22,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "wannier-developers";
     repo = "wannier90";
-    rev = "v${version}";
-    hash = "sha256-+Mq7lM6WuwAnK/2FlDz9gNRIg2sRazQRezb3BfD0veY=";
+    rev = "8059cc53fdc739d7c0f5a8e03d59094f6fe709d2";
+    hash = "sha256-CaO1UT21EiJzFj6yb78LKtTd20Gk7ZwOK4vCbtww80k=";
   };
 
   # test cases are removed as error bounds of wannier90 are obviously to tight
@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
     export OMP_NUM_THREADS=4
   '';
 
-  enableParallelBuilding = true;
+  enableParallelBuilding = false; # true;
 
   hardeningDisable = [ "format" ];
 
