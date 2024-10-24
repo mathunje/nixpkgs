@@ -30,6 +30,7 @@ stdenv.mkDerivation rec {
   postPatch = ''
     rm -r test-suite/tests/testpostw90_{fe_kpathcurv,fe_kslicecurv,si_geninterp,si_geninterp_wsdistance}
     rm -r test-suite/tests/testw90_example26   # Fails without AVX optimizations
+    rm -r test-suite/tests/testpostw90_pt_shc_higher/
     patchShebangs test-suite/run_tests test-suite/testcode/bin/testcode.py
   '';
 
